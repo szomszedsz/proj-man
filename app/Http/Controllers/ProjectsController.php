@@ -15,7 +15,9 @@ class ProjectsController extends Controller
     public function index()
     {
       
-        $projects = Projects::getAllProjectWithInfo();
+        $projects = Projects::with(['owners','statuses'])->get();
+    
+        return view('projects.index',["projects" => $projects]);
 
          
     }
@@ -27,7 +29,8 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        //
+        //todo    
+        return view('projects.form',[]);
     }
 
     /**
@@ -38,7 +41,8 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //todo implement store
+           return view('projects.index',[]);
     }
 
     /**
@@ -59,8 +63,9 @@ class ProjectsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Projects $projects)
-    {
-        //
+    {   
+         //todo make find one ORM and pass project data to route
+         return view('projects.form',[]);
     }
 
     /**
@@ -72,7 +77,7 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, Projects $projects)
     {
-        //
+        //todo make projects request for validation or make form input validation here
     }
 
     /**
