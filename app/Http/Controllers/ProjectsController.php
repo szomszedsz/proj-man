@@ -14,11 +14,9 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        $projects = Projects::all();
+      
         $projects = Projects::getAllProjectWithInfo();
 
-        var_dump($projects);
-    
          
     }
 
