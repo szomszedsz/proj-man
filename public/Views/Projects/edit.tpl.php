@@ -52,16 +52,40 @@ $this->end_capture('main_head_content') ?>
         <?php endforeach;?>
     </select>
     </div>
-     <div class="col-2">
-      <button id="add-owner" type="button" class="btn btn-primary mt-4"><i class="bi bi-person-plus"></i></button>
-     </div> 
+     <div class="col-2 text-start">
+  
+      <button type="button" class="btn btn-primary mt-4" data-bs-toggle="modal" data-bs-target="#addNewOwnerModal">
+        <i class="bi bi-person-plus"></i>
+      </button>
+
+   
+    </div> 
      <div id="add-owner-form" class="col-12"></div>      
     </div>
   </div>
-
   <button type="submit" class="btn btn-primary mt-2">Mentés</button>
+
+
 </form>
 
+
+<div class="modal fade" id="addNewOwnerModal" tabindex="-1" aria-labelledby="addNewOwnerModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Új kapcsolattartó hozzáadása</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+         <?php $this->include_file('Views/Includes/addOwnerForm.tpl.php');?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Mégse</button>
+        <button id='save-new-owner' type="button" class="btn btn-success"><i class="bi bi-person-plus-fill"></i> Mentés</button>
+      </div>
+    </div>
+  </div>
+</div>
    
 <?php $this->end_capture('body') ?>
 

@@ -1,7 +1,27 @@
 const Projects = {
-    delete: function() {
-        //make ajax request
+    deleteAjax: function(projectId) {
+        return new Promise(function(resolve, reject) {
+
+            $.ajax({
+                type: "DELETE",
+                url: "/api/project/delete/" + projectId,
+                success: function(responseData) {
+
+                    resolve(responseData)
+
+
+                }
+            }).done().fail(reject);
+        });
     },
+    deleteProject: function(projectId) {
+        this.deleteAjax(projectId).then(function(responseData) {
+            console.log(responseData);
+
+        }).catch(function(deleteAjaxError) {
+            console.error(deleteAjaxError)
+        });
+    }
 }
 
 const Owners = {
@@ -27,6 +47,21 @@ const Owners = {
 
 $(document).ready(function() {
     $("#add-owner").off().on("click", function() {
-        Owners.addForm();
+        try {
+            Owners.addForm();
+        } catch (e) {
+            consle.error(e);
+        }
     });
+
+
+    $("#project-list .delete-project-btn").off().on("click", function() {
+        let clickedProjectId = $(this).data("project");
+        Projects.deleteProject(clickedProjectId);
+    });
+
+    $("#save-new-owner").off().on('click', function() {
+        alert('klakkk');
+    });
+
 });
