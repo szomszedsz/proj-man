@@ -8,9 +8,9 @@ use PDODb;
 class OwnersModel extends BaseModel
 {
 
-    public int $id;
-    public string $name;
-    public string $email;
+    protected int $id;
+    protected string $name;
+    protected string $email;
 
     function __construct()
     {
@@ -40,7 +40,7 @@ class OwnersModel extends BaseModel
 
     public function getName():string
     {
-        return $this->Name;
+        return $this->name;
     }
 
     public function getEmail():string
@@ -51,6 +51,24 @@ class OwnersModel extends BaseModel
     public function getAll():array
     {
         return $this->DB->setReturnType(\PDO::FETCH_CLASS,"OwnersModel")->get($this->table);
+    }
+
+    public function store(OwnersModel $OwnersModel):int
+    {
+
+       $ownerData = [
+        "name" => $OwnersModel->getName(),
+        "email" => $OwnersModel->getEmail(),
+      ];
+     
+      try{
+        $lastInsertId = $this->DB->insert($this->table, $ownerData);
+        return $lastInsertId;
+      }
+      catch(\PDOException $e){
+        throw new \Exception($e->getMessage());
+      }      
+       
     }
 
 }

@@ -1,7 +1,6 @@
 <?php 
 
 namespace Welover\Controllers;
-use Welover\Controllers\View;
 use Welover\Models\StatusesModel;
 
 class StatusesController {

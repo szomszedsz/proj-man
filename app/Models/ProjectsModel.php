@@ -114,9 +114,14 @@ class ProjectsModel extends BaseModel
         "title" => $Project->getTitle(),
         "description" => $Project->getDescription(),
       ];
-     
+      
+      try{
       $lastInsertId = $this->DB->insert($this->table, $ProjectData);
-   
+      }
+      catch(\PDOException $e){
+        throw new \Exception($e->getMessage());
+      }      
+
       if ($lastInsertId) {
         return $lastInsertId;
       }

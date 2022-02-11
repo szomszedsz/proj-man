@@ -1,6 +1,6 @@
 <?php 
 
-namespace Welover\Controllers;
+namespace Welover\Controllers\Projects;
 use Welover\Controllers\View;
 use Welover\Models\OwnersModel;
 use Welover\Models\ProjectOwnerPivotModel;
@@ -108,14 +108,7 @@ class ProjectsController {
         //todo make update method body
     }
 
-    public function delete(int $id):int 
-    {   
-        $affectedRows = (integer) 0;
-
-        echo 'delete mothafucka';
-
-        return $affectedRows;
-    }
+  
 
     private function getFormFieldData():array{
         
