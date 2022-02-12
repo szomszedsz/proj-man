@@ -140,4 +140,30 @@ class ProjectsModel extends BaseModel
      
     }
 
+      public function update(ProjectsModel $Project){
+
+
+        $updateData=[
+          "id"=> $Project->getId(),
+          "title" => $Project->getTitle(),
+          "description" => $Project->getDescription()
+        ];
+
+        $this->DB->where('id', $Project->getId());
+
+        try{
+          if($this->DB->update($this->table, $updateData)){
+            return $this->DB->getRowCount();
+          } 
+          else{
+             throw new \Exception($this->DB->getLastError());
+          }
+        }
+        catch(\PDOException $e){
+          $e->getMessage();
+        }
+       
+     
+    }
+
 }

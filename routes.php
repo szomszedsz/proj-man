@@ -10,7 +10,7 @@ SimpleRouter::group(['prefix' => '/project'], function () {
   SimpleRouter::get('/edit/{id}', [ProjectsController::class, 'edit',function($id){}]);
   SimpleRouter::get('/create', [ProjectsController::class, 'create']);
   SimpleRouter::post('', [ProjectsController::class, 'store']);
-  SimpleRouter::put('', [ProjectsController::class, 'update']);
+  SimpleRouter::post('/{id}', [ProjectsController::class, 'update',function($id){}]);
 });
 
 SimpleRouter::group(['prefix' => '/api'], function () {

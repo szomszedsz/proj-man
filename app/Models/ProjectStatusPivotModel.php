@@ -64,13 +64,38 @@ class ProjectStatusPivotModel extends BaseModel
     }
 
 
-
     public function delete($projectId){
 
       $this->DB->where('project_id', $projectId);
       $this->DB->delete($this->table);
       $this->DB->delete($this->table);
       return $this->DB->getLastError();
+     
+    }
+
+
+      public function update(ProjectStatusPivotModel $ProjectStatusPivot){
+
+
+        $updateData=[
+          "project_id"=> $ProjectStatusPivot->getProjectId(),
+          "status_id" => $ProjectStatusPivot->getStatusId(),
+         ];
+
+        $this->DB->where('project_id', $ProjectStatusPivot->getProjectId());
+
+        try{
+          if($this->DB->update($this->table, $updateData)){
+            return $this->DB->getRowCount();
+          } 
+          else{
+             throw new \Exception($this->DB->getLastError());
+          }
+        }
+        catch(\PDOException $e){
+          $e->getMessage();
+        }
+      
      
     }
 

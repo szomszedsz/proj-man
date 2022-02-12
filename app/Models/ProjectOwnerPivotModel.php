@@ -74,6 +74,30 @@ class ProjectOwnerPivotModel extends BaseModel
     }
 
 
+      public function update(ProjectOwnerPivotModel $ProjectOwnerPivot){
+
+
+        $updateData=[
+          "project_id"=> $ProjectOwnerPivot->getProjectId(),
+          "owner_id" => $ProjectOwnerPivot->getOwnerId()
+         ];
+
+        $this->DB->where('project_id', $ProjectOwnerPivot->getProjectId());
+
+        try{
+          if($this->DB->update($this->table, $updateData)){
+            return $this->DB->getRowCount();
+          } 
+          else{
+             throw new \Exception($this->DB->getLastError());
+          }
+        }
+        catch(\PDOException $e){
+          $e->getMessage();
+        }
+       
+      }
+
     
 
 }

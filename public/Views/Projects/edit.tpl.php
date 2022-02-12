@@ -15,10 +15,10 @@ $this->end_capture('main_head_content') ?>
 <?php $this->capture();?>
 
 <?php
- if($this->data['projects']){$method = 'PUT';}else{$method =  'POST';};
- if($this->data['projects']){$action = 'project/'.$this->data['projects'][0]->p_id;}else{$action = '/project';} ?>
 
-<form id="create-project-form" method="<?php echo $method ?>" action="<?php echo $action ;?>">
+ if($this->data['projects']){$action = '/project'.'/'.$this->data['projects'][0]->p_id;}else{$action = '/project';} ?>
+
+<form id="create-project-form" method="POST" action="<?php echo $action;?>">
   <div class="form-group mt-2">
     <label for="titleInput">Cím</label>
     <input name="title" type="text" class="form-control" id="titleInput"  value="<?php if($this->data['projects']){ echo $this->data['projects'][0]->p_title;}?>" aria-describedby="projectTitle" placeholder="">
@@ -90,5 +90,7 @@ $this->end_capture('main_head_content') ?>
 <?php $this->end_capture('body') ?>
 
 <?php $this->capture(); ?>
+
     <script type="text/javascript" src="/assets/js/main.js"></script>
+  
 <?php $this->end_capture('custom_js'); ?> 

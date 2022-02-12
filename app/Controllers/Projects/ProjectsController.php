@@ -104,8 +104,28 @@ class ProjectsController {
         }
     }
 
-    public function update(){
-        //todo make update method body
+    public function update($projectId){
+
+
+        $Project = new ProjectsModel;
+        $StatusPivotModel = new ProjectStatusPivotModel;
+        $OwnersPivotModel = new ProjectOwnerPivotModel;
+
+        $Project->setId($projectId);
+        $Project->setTitle($_POST['title']);
+        $Project->setDescription($_POST['description']);
+
+        $StatusPivotModel->setProjectId($projectId);
+        $StatusPivotModel->setStatusId($_POST['status']);
+
+        $OwnersPivotModel->setProjectId($projectId);
+        $OwnersPivotModel->setOwnerId($_POST['owner']);
+    
+
+        $this->DB->update($Project);
+        $StatusPivotModel->update($StatusPivotModel);
+        $OwnersPivotModel->update($OwnersPivotModel);
+         header('Location: /');
     }
 
   
