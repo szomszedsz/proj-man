@@ -26,7 +26,8 @@ class OwnersApiController {
 
         $lastInsertId = $this->DB->store($Owner);
             $Response->setStatus(201);
-            $Response->setStatusMessage('DB_ERROR');
+            $Response->setStatusMessage('OWNER_CREATED');
+            $Response->setResponseData(['id'=> $lastInsertId,"name" => $Owner->getName()]);
         }
         catch(\Exception $e){
             

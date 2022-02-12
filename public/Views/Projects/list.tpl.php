@@ -21,9 +21,9 @@ $this->end_capture('main_head_content') ?>
     <div class="row">
         <div class="col-sm-12">
           <?php foreach($this->data['projects'] as $project) :?>
-                <div class="card mt-2">
-                    <ul class="list-group list-group-flush">
-                        <li id="project-list" class="list-group-item">
+                <div id="project-card-<?php echo $project->p_id;?>"  class="card mt-2">
+                    <ul id="project-list"  class="list-group list-group-flush">
+                        <li class="list-group-item">
                             <div class="float-end"><?php echo $project->s_name ?></div>
                                 <h4><?php echo $project->p_title; ?></h4>
                                 <p><?php echo $project->o_name; ?> (<?php echo $project->o_email; ?>)</p>

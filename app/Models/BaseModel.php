@@ -43,4 +43,21 @@ abstract class BaseModel{
     }
    
 
+    public function startTransaction(){
+      $this->DB->startTransaction();
+    }
+
+
+    public function commitTransaction(){
+      $this->DB->commit();
+    }
+
+    public function rollbackTransaction(){
+      $this->DB->rollback();
+    }
+
+      public function saveTransaction(){
+      $this->DB->save();
+    }
+
 }

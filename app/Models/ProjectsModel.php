@@ -7,6 +7,7 @@ use Welover\Models\BaseModel;
 use PDODb;
 
 
+
 class ProjectsModel extends BaseModel
 {
 
@@ -130,4 +131,13 @@ class ProjectsModel extends BaseModel
       }
 
     }
+
+    public function delete($projectId){
+
+      $this->DB->where('id', $projectId);
+      $this->DB->delete($this->table);
+      return $this->DB->getLastError();
+     
+    }
+
 }

@@ -18,7 +18,7 @@ $this->end_capture('main_head_content') ?>
  if($this->data['projects']){$method = 'PUT';}else{$method =  'POST';};
  if($this->data['projects']){$action = 'project/'.$this->data['projects'][0]->p_id;}else{$action = '/project';} ?>
 
-<form method="<?php echo $method ?>" action="<?php echo $action ;?>">
+<form id="create-project-form" method="<?php echo $method ?>" action="<?php echo $action ;?>">
   <div class="form-group mt-2">
     <label for="titleInput">Cím</label>
     <input name="title" type="text" class="form-control" id="titleInput"  value="<?php if($this->data['projects']){ echo $this->data['projects'][0]->p_title;}?>" aria-describedby="projectTitle" placeholder="">
@@ -44,7 +44,7 @@ $this->end_capture('main_head_content') ?>
     <div class="col-10">
             
       <label for="owner">Kapcsolattartó</label>
-    <select name="owner" class="form-select" aria-label="owner-select">
+    <select id="owner-select" name="owner" class="form-select" aria-label="owner-select">
         <?php foreach($this->data['owners'] as $owner):?>
           <option value="<?php echo $owner->id?>" 
            <?php if($this->data['projects'] && $owner->id == $this->data['projects'][0]->o_id){echo 'selected';}?>>
@@ -73,7 +73,7 @@ $this->end_capture('main_head_content') ?>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Új kapcsolattartó hozzáadása</h5>
+        <h5 class="modal-title">Új kapcsolattartó hozzáadása</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

@@ -62,6 +62,18 @@ class ProjectOwnerPivotModel extends BaseModel
       }
 
     }
+
+
+
+    public function delete($projectId){
+
+      $this->DB->where('project_id', $projectId);
+      $this->DB->delete($this->table);
+      return $this->DB->getLastError();
+     
+    }
+
+
     
 
 }
