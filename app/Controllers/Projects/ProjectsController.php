@@ -123,6 +123,8 @@ class ProjectsController {
     
 
         $this->DB->update($Project);
+
+        //todo check pivot content is exist. If not, insert istead of update
         $StatusPivotModel->update($StatusPivotModel);
         $OwnersPivotModel->update($OwnersPivotModel);
          header('Location: /');
