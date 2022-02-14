@@ -45,10 +45,7 @@ class ProjectsController {
 
       public function edit(int $id = 0){
 
-        $projectData = $this->DB->getOneWithRelated($id);
-
- 
-        
+        $projectData = $this->DB->getOneWithRelated($id);       
         $formFieldData = $this->getFormFieldData();
 
         $View = new View('Views/Projects/edit.tpl.php');
@@ -127,7 +124,8 @@ class ProjectsController {
         //todo check pivot content is exist. If not, insert istead of update
         $StatusPivotModel->update($StatusPivotModel);
         $OwnersPivotModel->update($OwnersPivotModel);
-         header('Location: /');
+        
+        header('Location: /');
     }
 
   

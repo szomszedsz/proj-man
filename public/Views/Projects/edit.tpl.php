@@ -54,7 +54,7 @@ $this->end_capture('main_head_content') ?>
     </div>
      <div class="col-2 text-start">
   
-      <button type="button" class="btn btn-primary mt-4" data-bs-toggle="modal" data-bs-target="#addNewOwnerModal">
+      <button id="add-ower-btn" type="button" class="btn btn-primary mt-4">
         <i class="bi bi-person-plus"></i>
       </button>
 
@@ -90,7 +90,7 @@ $this->end_capture('main_head_content') ?>
 <?php $this->end_capture('body') ?>
 
 <?php $this->capture(); ?>
-
+    <script type="text/javascript" src="/assets/js/owners.js"></script>      
     <script type="text/javascript" src="/assets/js/main.js"></script>
   
 <?php $this->end_capture('custom_js'); ?> 
