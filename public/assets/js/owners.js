@@ -1,9 +1,3 @@
-//var addownermodal = new bootstrap.Modal(document.getElementById('addNewOwnerModal'));
-var myModal = new bootstrap.Modal(document.getElementById('addNewOwnerModal'));
-
-
-
-
 const Owners = {
     createAjax: function(ownerData) {
         return new Promise(function(resolve, reject) {
