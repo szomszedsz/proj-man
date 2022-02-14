@@ -42,6 +42,7 @@ const Owners = {
         }).catch(function(createAjaxError) {
             toastr.error(createAjaxError);
             Owners.clearForm();
+            Owners.closeModal();
 
 
         });
