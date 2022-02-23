@@ -4,8 +4,51 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2fe17fa0c7b4fd4216def24b687cf758",
+    "content-hash": "b68693d3734515e9a49e9a8fe2683075",
     "packages": [
+        {
+            "name": "balint-horvath/dotenv-php",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/balint-horvath/dotenv-php.git",
+                "reference": "8a7098e6915e4948466d0b3c075509c3a26dac07"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/balint-horvath/dotenv-php/zipball/8a7098e6915e4948466d0b3c075509c3a26dac07",
+                "reference": "8a7098e6915e4948466d0b3c075509c3a26dac07",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "kahlan/kahlan": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BalintHorvath\\DotEnv\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Bálint Horváth",
+                    "email": "balint@balint.digital"
+                }
+            ],
+            "description": "Simple .env file parser and ENV loader (.env to getenv() and $_ENV) based on standard PHP INI parser (parse_ini_file).",
+            "support": {
+                "issues": "https://github.com/balint-horvath/dotenv-php/issues",
+                "source": "https://github.com/balint-horvath/dotenv-php/tree/master"
+            },
+            "time": "2017-10-23T19:30:01+00:00"
+        },
         {
             "name": "pecee/simple-router",
             "version": "4.3.7.2",

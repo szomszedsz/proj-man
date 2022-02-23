@@ -1,5 +1,7 @@
 <?php 
 
+declare(strict_types=1);
+
 namespace Welover\Models;
 
 abstract class BaseModel{

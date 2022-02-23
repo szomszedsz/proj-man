@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Welover\Models;
 use Welover\Models\BaseModel;
 use PDODb;

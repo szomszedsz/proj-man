@@ -1,5 +1,7 @@
 <?php 
 
+declare(strict_types=1);
+
 namespace Welover\Controllers\Projects;
 
 use Welover\Models\ProjectsModel;

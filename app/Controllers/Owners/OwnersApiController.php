@@ -1,5 +1,7 @@
 <?php 
 
+declare(strict_types=1);
+
 namespace Welover\Controllers\Owners;
 
 use Welover\Controllers\View;
