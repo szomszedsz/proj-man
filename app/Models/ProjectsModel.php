@@ -116,6 +116,8 @@ class ProjectsModel extends BaseModel
         "description" => $Project->getDescription(),
       ];
       
+     
+
       try{
       $lastInsertId = $this->DB->insert($this->table, $ProjectData);
       }
@@ -150,15 +152,15 @@ class ProjectsModel extends BaseModel
 
         $this->DB->where('id', $Project->getId());
 
-        try{
-          if($this->DB->update($this->table, $updateData)){
+        try {
+          if ($this->DB->update($this->table, $updateData)){
             return $this->DB->getRowCount();
           } 
-          else{
+          else {
              throw new \Exception($this->DB->getLastError());
           }
         }
-        catch(\PDOException $e){
+        catch (\PDOException $e){
           $e->getMessage();
         }
     }

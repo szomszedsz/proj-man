@@ -73,38 +73,22 @@ class ProjectsController {
         $Project->setTitle($_POST['title']);
         $Project->setDescription($_POST['description']);
 
-        try{
         $projectId = $this->DB->store($Project);
-            try{
-            $ProjectStatusPivot = new ProjectStatusPivotModel();
-            $ProjectStatusPivot->setProjectId($projectId);
-            $ProjectStatusPivot->setStatusId( (int) $_POST['status']);
+         
+        $ProjectStatusPivot = new ProjectStatusPivotModel();
+        $ProjectStatusPivot->setProjectId($projectId);
+        $ProjectStatusPivot->setStatusId( (int) $_POST['status']);
 
-            $ProjectStatusPivot->store($ProjectStatusPivot);
-                try{        
-                    $ProjectOwnerPivot = new ProjectOwnerPivotModel();
-                    $ProjectOwnerPivot->setProjectId($projectId);
-                    $ProjectOwnerPivot->setOwnerId( (int) $_POST['owner']);
-                    $ProjectOwnerPivot->store($ProjectOwnerPivot);
+        $ProjectStatusPivot->store($ProjectStatusPivot);
+            
+        $ProjectOwnerPivot = new ProjectOwnerPivotModel();
+        $ProjectOwnerPivot->setProjectId($projectId);
+        $ProjectOwnerPivot->setOwnerId( (int) $_POST['owner']);
+        $ProjectOwnerPivot->store($ProjectOwnerPivot);
                      
-                    header('Location: /');
-                }
-                catch(\Exception $e) {
-                    $errors[] = $e->getMessage();
-               
-                    //todo  delete inserted project data
-              }
-            }
-            catch(\Exception $e) {
-                $errors[] = $e->getMessage();
-                //todo  delete inserted project data
-                  
-              }
-        }
-        catch(\Exception $e) {
-            $errors[] = $e->getMessage();
+        header('Location: /');
              
-        }
+        
     }
 
     public function update(int $projectId){

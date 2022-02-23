@@ -24,9 +24,6 @@ abstract class BaseApiController{
     {
         return $this->response;
     }    
-    /*
-    public function createEmptyApiResponse():void{
-        $this->setResponse(new ApiResponse());
-    }*/
+    
 
 }

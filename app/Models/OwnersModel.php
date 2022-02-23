@@ -6,7 +6,6 @@ namespace Welover\Models;
 use Welover\Models\BaseModel;
 use PDODb;
 
-
 class OwnersModel extends BaseModel
 {
 
