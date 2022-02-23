@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Welover\Controllers\Projects;
 
-use Welover\Models\ProjectsModel;
-use Welover\Responses\ApiResponse;
 use Welover\Controllers\BaseControllers\BaseApiController;
-use Welover\Models\ProjectOwnerPivotModel;
-use Welover\Models\ProjectStatusPivotModel;
+use Welover\Responses\ApiResponse;
+use Welover\Models\{
+  ProjectsModel,
+  ProjectOwnerPivotModel,
+  ProjectStatusPivotModel
+ };
 
 class ProjectsApiController extends BaseApiController  {
     
@@ -16,18 +18,16 @@ class ProjectsApiController extends BaseApiController  {
     
     public function __construct(){
       parent::__construct();  
-      $this->DB = new ProjectsModel; 
+      $this->DB = new ProjectsModel(); 
     }
 
       public function delete(int $id)
     {   
 
-              $ApiResponse = $this->getResponse();
-       $OwnerPivot = new ProjectOwnerPivotModel;
-       $StatusPivot = new ProjectStatusPivotModel;
+       $ApiResponse = $this->getResponse();
+       $OwnerPivot = new ProjectOwnerPivotModel();
+       $StatusPivot = new ProjectStatusPivotModel();
 
-      
-      
         $errorFlag = 0;
 
         //todo add transaction
@@ -41,10 +41,12 @@ class ProjectsApiController extends BaseApiController  {
               $ApiResponse->setStatusMessage('DELETE_ERROR');
             
         }
-        else{ 
+        else{
+
             $ApiResponse->setStatus(200);
             $ApiResponse->setStatusMessage('PROJECT_DELETED');
-        }
+        
+          }
          return $ApiResponse->response();
     }
 

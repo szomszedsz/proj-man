@@ -15,7 +15,7 @@ $this->end_capture('main_head_content') ?>
 <?php $this->capture();?>
 
 <?php
-
+$this->data['projects'] = [];
  if($this->data['projects']){$action = '/project'.'/'.$this->data['projects'][0]->p_id;}else{$action = '/project';} ?>
 
 <form id="create-project-form" method="POST" action="<?php echo $action;?>">

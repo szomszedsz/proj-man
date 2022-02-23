@@ -8,14 +8,12 @@ use Exception;
 use Welover\Models\BaseModel;
 use PDODb;
 
-
-
 class ProjectsModel extends BaseModel
 {
 
-    public int $id;
-    public string $title;
-    public string $description;
+    protected int $id;
+    protected string $title;
+    protected string $description;
 
     function __construct()
     {
@@ -142,8 +140,7 @@ class ProjectsModel extends BaseModel
      
     }
 
-      public function update(ProjectsModel $Project){
-
+    public function update(ProjectsModel $Project){
 
         $updateData=[
           "id"=> $Project->getId(),
@@ -164,8 +161,5 @@ class ProjectsModel extends BaseModel
         catch(\PDOException $e){
           $e->getMessage();
         }
-       
-     
     }
-
 }

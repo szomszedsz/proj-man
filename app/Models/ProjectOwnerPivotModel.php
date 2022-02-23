@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 namespace Welover\Models;
+
 use Welover\Models\BaseModel;
 use PDODb;
-
 
 class ProjectOwnerPivotModel extends BaseModel
 {
@@ -47,7 +47,7 @@ class ProjectOwnerPivotModel extends BaseModel
     }
 
   
-     public function store(ProjectOwnerPivotModel $ProjectOwnerPivot):int
+     public function store(ProjectOwnerPivotModel $ProjectOwnerPivot):bool
     {
       $pivotData = [
         "project_id" => $ProjectOwnerPivot->getProjectId(),
@@ -66,7 +66,6 @@ class ProjectOwnerPivotModel extends BaseModel
     }
 
 
-
     public function delete($projectId){
 
       $this->DB->where('project_id', $projectId);
@@ -76,7 +75,7 @@ class ProjectOwnerPivotModel extends BaseModel
     }
 
 
-      public function update(ProjectOwnerPivotModel $ProjectOwnerPivot){
+    public function update(ProjectOwnerPivotModel $ProjectOwnerPivot){
 
 
         $updateData=[
@@ -87,10 +86,9 @@ class ProjectOwnerPivotModel extends BaseModel
         $this->DB->where('project_id', $ProjectOwnerPivot->getProjectId());
 
         try{
-          if($this->DB->update($this->table, $updateData)){
+          if ($this->DB->update($this->table, $updateData)){
             return $this->DB->getRowCount();
-          } 
-          else{
+          } else {
              throw new \Exception($this->DB->getLastError());
           }
         }

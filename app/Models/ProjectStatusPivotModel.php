@@ -6,7 +6,6 @@ namespace Welover\Models;
 use Welover\Models\BaseModel;
 use PDODb;
 
-
 class ProjectStatusPivotModel extends BaseModel
 {
 
@@ -47,14 +46,16 @@ class ProjectStatusPivotModel extends BaseModel
     }
 
   
-     public function store(ProjectStatusPivotModel $ProjectStatusPivot):int
+     public function store(ProjectStatusPivotModel $ProjectStatusPivot):bool
     {
       $pivotData = [
         "project_id" => $ProjectStatusPivot->getProjectId(),
         "status_id" => $ProjectStatusPivot->getStatusId(),
       ];
      
-      $lastInsertId = $this->DB->insert($this->table, $pivotData);
+      $lastInsertId =  $this->DB->insert($this->table, $pivotData);
+     
+
    
       if ($lastInsertId) {
         return $lastInsertId;
@@ -87,10 +88,9 @@ class ProjectStatusPivotModel extends BaseModel
         $this->DB->where('project_id', $ProjectStatusPivot->getProjectId());
 
         try{
-          if($this->DB->update($this->table, $updateData)){
+          if ($this->DB->update($this->table, $updateData)){
             return $this->DB->getRowCount();
-          } 
-          else{
+          } else {
              throw new \Exception($this->DB->getLastError());
           }
         }

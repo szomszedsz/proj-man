@@ -12,24 +12,19 @@ class OwnersController {
     private $DB;
     
     public function __construct(){
-        $this->DB = new OwnersModel;   
+        $this->DB = new OwnersModel();   
     }
 
 
     public function store(){
+
+        $Owner = new OwnersModel();
+        $Owner->setName( (string) $_POST['name']);
+        $Owner->setEmail( (string) $_POST['email']);
+
+        $this->DB->store($Owner);     
         
-        
-
-
-
-        $Owner = new OwnersModel;
-        $Owner->setName($_POST['name']);
-        $Owner->setEmail($_POST['email']);
-
-        $this->DB->store($Owner);
-
-     
-        $Response = new ApiResponse(201,'kolbász',['keksz'=>'krumpli']); 
+        $Response = new ApiResponse(201,'data',[]); 
         $Response->response();
     }
 }
